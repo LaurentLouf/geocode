@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+		html, body, form{
+        height: 100%;
+        margin: 20px;
+        padding: 0px
+		}
+		
+		h3 {
+		margin:5px;
+		}
+		
+		#map-canvas{
+        height: 50%;
+        margin: 0px;
+        padding: 0px
+		}
+	</style>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v3.exp&libraries=drawing,geometry,places&sensor=false"></script>
+    <script type="text/javascript" src="source.js"></script>
+</head>
+<body>
+	<form action="" method="post" id="form" onSubmit="return false ;">
+		<h3>Number of addresses</h3>
+		<input type="radio" name="number" value="1" onclick="check(this.value)" />1 <input type="radio" name="number" checked="" value="2" onclick="check(this.value)" />2
+
+		<h3>User address : </h3>
+		<input type="text" id="addressUser0" name="addressUser0" size="100" placeholder="Enter address"/><input type="button" value="CLEAR" onclick="clearAll(0)"/><input type="button" value="CENTER" onclick="centerMap(0)"/><br/><br/>
+		<input type="text" id="addressUser1" name="addressUser1" size="100" placeholder="Enter address"/><input type="button" id="clear1" value="CLEAR" onclick="clearAll(1)"/><input type="button" id="center1" value="CENTER" onclick="centerMap(1)"/><br/><br/>
+
+		<img src="pin.png" alt="PIN" id="pin0" onclick="pinToCenter(0)" />
+		<img src="pin.png" alt="PIN" id="pin1" onclick="pinToCenter(1)" />
+		<div id="map-canvas"></div>
+		 
+		 <h3>Google Address :<h3>
+		 <input type="text" id="addressGoogle0" name="addressGoogle0" size="100" /><input type="button" id="useGoogle0" value="USE" onclick="useGoogle(0)"/>
+		 <input type="text" id="addressGoogle1" name="addressGoogle1" size="100" /><input type="button" id="useGoogle1" value="USE" onclick="useGoogle(1)"/>
+
+		 <h3>Coordinates :<h3>
+		 <input type="text" id="coordinates0" name="coordinates0" size="100" /><input type="button" id="useGPS0" value="USE" onclick="useGPS(0)"/>
+		 <input type="text" id="coordinates1" name="coordinates1" size="100" /><input type="button" id="useGPS1" value="USE" onclick="useGPS(1)"/>
+		
+		<h3>Google geocoder results:</h3>
+		<div id="details0" style="width:48%;float:left;"></div>
+		<div id="details1" style="width:48%;float:left;"></div>
+		<div style="width:96%;clear:both;"></div><br/><br/>
+		
+		<input type="submit" name="submit" value="Send" onClick="document.getElementById('form').submit() ;"/>
+	</form>
+</body>
+</html>
